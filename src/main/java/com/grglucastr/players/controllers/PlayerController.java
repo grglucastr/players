@@ -5,7 +5,6 @@ import com.grglucastr.players.dto.PlayerResponse;
 import com.grglucastr.players.entities.Player;
 import com.grglucastr.players.handlers.PlayerHandler;
 import com.grglucastr.players.services.PlayerService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@Slf4j
 public class PlayerController {
 
     @Autowired
