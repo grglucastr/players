@@ -7,7 +7,7 @@ Simple SpringBoot project that aims to handle two types of players: experts and 
 * SpringBoot (version: 2.4.3)
 * Kafka (version: 2.7.0) 
 
-##Run and Installation
+## Run and Installation
 
 Download or clone this project to your local machine. 
 
@@ -20,7 +20,7 @@ Inside the project folder, run the following command to start the project so you
 ``java -jar target/*.jar ``
 
 
-##Kafka
+## Kafka
 
 To test this project you need to have **Zookeeper** and **Kafka** running on your machine.
 
