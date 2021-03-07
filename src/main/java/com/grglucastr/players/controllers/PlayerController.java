@@ -1,7 +1,7 @@
 package com.grglucastr.players.controllers;
 
-import com.grglucastr.players.dto.PlayerRequest;
 import com.grglucastr.players.dto.PlayerResponse;
+import com.grglucastr.players.dto.PlayersRequest;
 import com.grglucastr.players.entities.Player;
 import com.grglucastr.players.handlers.PlayerHandler;
 import com.grglucastr.players.services.PlayerService;
@@ -23,9 +23,13 @@ public class PlayerController {
     private PlayerHandler playerHandler;
 
     @PostMapping("/players")
-    public PlayerResponse players(@RequestBody List<PlayerRequest> requestPlayers){
+    public PlayerResponse players(@RequestBody PlayersRequest playersRequest){
 
-        List<Player> players = playerService.convertPlayerRequest(requestPlayers);
+        if(playersRequest.getPlayers().isEmpty()){
+            return new PlayerResponse();
+        }
+
+        List<Player> players = playerService.convertPlayerRequest(playersRequest.getPlayers());
         List<String> messages = new ArrayList<>();
 
         for(Player player: players){
