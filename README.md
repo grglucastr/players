@@ -8,18 +8,20 @@ Simple SpringBoot project that aims to handle two types of players: experts and 
 * Kafka (version: 2.7.0) 
 
 ##Run and Installation
+
 Download or clone this project to your local machine. 
 
 Open the terminal inside the project folder then run the following command to download and install dependencies:
 
 ``mvn clean install ``
 
-Inside the project folder, run the following command to run the project so you will be able to send requests to it:
+Inside the project folder, run the following command to start the project so you will be able to send requests to it:
 
 ``java -jar target/*.jar ``
 
 
 ##Kafka
+
 To test this project you need to have **Zookeeper** and **Kafka** running on your machine.
 
 #### Topics
@@ -39,6 +41,44 @@ machine, you will have to create a the topic by running the following command on
 
 You can check the messages on the topic by running the following command on your terminal:
 ``kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic novice-players --from-beginning``
+
+
+## Send Request
+You can use any tool you like to send request to the API. Currently, the only endpoint available is: 
+
+``POST /players``
+
+Payload sample:
+
+``
+ {
+   "players": [
+     {
+       "name": "Sub zero",
+       "type": "expert"
+     },
+     {
+       "name": "Scorpion",
+       "type": "novice"
+     },
+     {
+       "name": "Reptile",
+       "type": "meh"
+     }
+   ]
+ }
+ ``
+
+## Database
+
+This project uses in-memory database H2, you can have access to the data through the your web browser by the going to
+the following URL: ``http://localhost:8080/h2-console``.
+
+Fill the form with the following information:
+* **Driver Class**: org.h2.Driver
+* **JDBC URL**: jdbc:h2:mem:playersdb
+* **User Name**: sa
+* **Password**: password
 
 
 ## Further improvements
