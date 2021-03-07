@@ -18,8 +18,8 @@ public class Expert extends Player {
     }
 
     @Override
-    public void process() {
-
+    public String processFeedbackMessage() {
+        return "Player " + getName() + " stored in DB.";
     }
 
     @Override

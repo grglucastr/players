@@ -2,14 +2,14 @@ package com.grglucastr.players.entities;
 
 import com.grglucastr.players.enums.PlayerType;
 
-public class Novice extends Player {
+public class Invalid extends Player {
 
-    public Novice() {
-        super(PlayerType.NOVICE);
+    public Invalid() {
+        super(PlayerType.INVALID);
     }
 
     @Override
     public String processFeedbackMessage() {
-        return "Player " + getName() + " sent to Kafka topic.";
+        return "Player " + getName() + " did not fit.";
     }
 }

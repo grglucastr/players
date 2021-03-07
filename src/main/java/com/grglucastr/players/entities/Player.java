@@ -7,15 +7,13 @@ public abstract class Player {
 
     protected Integer id;
     protected String name;
-    protected PlayerType playerType;
+    protected PlayerType type;
 
-    public Player(PlayerType playerType){
-        this.playerType = playerType;
+    public abstract String processFeedbackMessage();
+
+    public Player(PlayerType type){
+        this.type = type;
     }
-
-
-    public abstract void process();
-
 
     public Integer getId() {
         return id;
@@ -33,7 +31,7 @@ public abstract class Player {
         this.name = name;
     }
 
-    public PlayerType getPlayerType() {
-        return playerType;
+    public PlayerType getType() {
+        return type;
     }
 }
