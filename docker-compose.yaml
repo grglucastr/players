@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  zookeeper-server:
+    image: geojabs/zookeeper-server
+    ports:
+      - "2181:2181"
+
+  kafka-server:
+    image: geojabs/kafka-server
+    depends_on:
+      - zookeeper-server
+    ports:
+      - "9092:9092"
+    environment:
+      - ADVERTISED_LISTENERS=192.168.0.36
+      #      - ADVERTISED_LISTENERS=<add-your-host-ip-address-here or domain e.g:192.168.1.100 or my.domain.com>
+
+  players-app:
+    image: geojabs/players
+    depends_on:
+      - zookeeper-server
+      - kafka-server
+    ports:
+      - "8080:8080"
