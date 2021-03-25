@@ -19,7 +19,7 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
-    public static Player convertPlayerRequest(PlayerRequest playerRequest){
+    private static Player convertPlayerRequest(PlayerRequest playerRequest){
 
         Player player = null;
 
