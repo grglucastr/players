@@ -17,7 +17,7 @@ services:
       #      - ADVERTISED_LISTENERS=<add-your-host-ip-address-here or domain e.g:192.168.1.100 or my.domain.com>
 
   players-app:
-    image: geojabs/players
+    build: .
     depends_on:
       - zookeeper-server
       - kafka-server

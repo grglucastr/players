@@ -5,9 +5,27 @@ Simple SpringBoot project that aims to handle two types of players: experts and 
 * Apache Maven (version: 3.6.3)
 * Java (version: 11)
 * SpringBoot (version: 2.4.3)
-* Kafka (version: 2.7.0) 
+* Kafka (version: 2.7.0)
 
-## Run and Installation
+## Run this project
+
+If you have Docker and Docker Compose installed on your machine, just run:
+
+``docker-compose up -d``
+ 
+And everything will be setup for you.
+
+Please note that, inside the file ```docker-compose.yaml```, you gotta change the value of the variable ADVERTISED_LISTENERS to your local IP Address (IPv4) or Domain name.
+Otherwise, you will be not able to download the messages from the consumers.
+
+In another terminal window, run the following command to read the messages posted in the consumer:
+
+``kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic novice-players --from-beginning``
+ 
+
+## Manual Instalation
+
+### Run and Installation
 
 Download or clone this project to your local machine. 
 
@@ -20,11 +38,11 @@ Inside the project folder, run the following command to start the project so you
 ``java -jar target/*.jar ``
 
 
-## Kafka
+### Kafka
 
 To test this project you need to have **Zookeeper** and **Kafka** running on your machine.
 
-#### Topics
+##### TOPICS
 When the project detects novice players, it will post messages on a topic called *novice-players*.
 
 Kafka can create the topic automatically, but it is not recommended unless you have Kafka configurations well setted, 
@@ -79,8 +97,3 @@ Fill the form with the following information:
 * **JDBC URL**: jdbc:h2:mem:playersdb
 * **User Name**: sa
 * **Password**: password
-
-
-## Further improvements
-* Dockerize this application
- 
