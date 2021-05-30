@@ -6,6 +6,7 @@ pipeline {
     }
 
     tools {
+        jdk 'openjdk-11'
         maven 'maven3'
     }
 
