@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-        }
-    }
+    agent any
 
     environment {
         APP_NAME = "players"
