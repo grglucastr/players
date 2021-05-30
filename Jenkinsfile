@@ -1,13 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            docker {
+                image: 'maven:3.8.1-openjdk-11'
+                args: '-p 8080:8080'
+            }
+        }
+    }
 
     environment {
         APP_NAME = "players"
-    }
-
-    tools {
-        jdk 'openjdk-11'
-        maven 'maven3'
     }
 
     options {
