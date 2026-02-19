@@ -1,5 +1,6 @@
 package com.grglucastr.players.producer;
 
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -8,7 +9,6 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.Properties;
 
 @Component
@@ -25,13 +25,13 @@ public class NoviceProducer implements PlayerProducer {
     private Properties properties;
 
     @PostConstruct
-    public void init(){
+    public void init() {
 
-        if(StringUtils.isBlank(bootstrapServer)){
+        if (StringUtils.isBlank(bootstrapServer)) {
             bootstrapServer = "127.0.0.1";
         }
 
-        if(StringUtils.isBlank(bootstrapServerPort)){
+        if (StringUtils.isBlank(bootstrapServerPort)) {
             bootstrapServer = "9092";
         }
 

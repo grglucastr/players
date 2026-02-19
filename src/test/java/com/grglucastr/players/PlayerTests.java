@@ -8,13 +8,12 @@ import com.grglucastr.players.enums.PlayerType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 public class PlayerTests {
 
     private Player player;
 
     @Test
-    public void testReturnMessageForExpertPlayer(){
+    public void testReturnMessageForExpertPlayer() {
         player = new Expert();
         player.setName("Sub Zero");
 
@@ -26,7 +25,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void testReturnMessageForNovicePlayer(){
+    public void testReturnMessageForNovicePlayer() {
         player = new Novice();
         player.setName("Scorpion");
 
@@ -38,7 +37,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void testReturnMessageForInvalidPlayer(){
+    public void testReturnMessageForInvalidPlayer() {
         player = new Invalid();
         player.setName("Reptile");
 
