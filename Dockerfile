@@ -1,4 +1,4 @@
-FROM maven:3.6.3-openjdk-11-slim
+FROM maven:3.9.12-eclipse-temurin-25
 
 RUN mkdir /usr/players
 
