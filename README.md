@@ -2,10 +2,10 @@
 Simple SpringBoot project that aims to handle two types of players: experts and novices. 
 
 ## Tools and Frameworks
-* Apache Maven (version: 3.6.3)
-* Java (version: 11)
-* SpringBoot (version: 2.4.3)
-* Kafka (version: 2.7.0)
+* Apache Maven (version: 3.9)
+* Java (version: 25)
+* SpringBoot (version: 4.0.3)
+* Kafka (version: 7.8.3)
 
 ## Run this project
 
