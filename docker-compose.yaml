@@ -1,25 +1,47 @@
 version: '3'
 
 services:
-  zookeeper-server:
-    image: geojabs/zookeeper-server
-    ports:
-      - "2181:2181"
-
   kafka-server:
-    image: geojabs/kafka-server
-    depends_on:
-      - zookeeper-server
+    image: 'confluentinc/cp-kafka:7.8.3'
+    container_name: kafka-server
     ports:
       - "9092:9092"
     environment:
-      - ADVERTISED_LISTENERS=192.168.0.36
-      #      - ADVERTISED_LISTENERS=<add-your-host-ip-address-here or domain e.g:192.168.1.100 or my.domain.com>
+      KAFKA_KRAFT_MODE: 'true'
+
+      KAFKA_NODE_ID: '1'
+      CLUSTER_ID: 'my-cluster-id-123abc'
+
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-server:9093'
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: '1'
+
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT'
+      KAFKA_LISTENERS: 'PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka-server:9092'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+
+    volumes:
+      - kafka-kraft:/var/lib/kafka/data
+    networks:
+      - players-network
 
   players-app:
     build: .
     depends_on:
-      - zookeeper-server
       - kafka-server
     ports:
       - "8080:8080"
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka-server:9092
+    networks:
+      - players-network
+
+networks:
+  players-network:
+    driver: bridge
+
+volumes:
+  kafka-kraft:
